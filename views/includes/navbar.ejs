@@ -36,11 +36,49 @@ max-width:250px;
 
 }
 
+.brand-text{
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 767.98px){
+  .navbar .container-fluid{ position: relative; }
+
+  .brand-center{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  /* reserve space so centered brand doesn't overlap icon/toggler */
+  .navbar-brand{
+    padding-left: 48px;
+    padding-right: 56px;
+  }
+
+  .navbar-toggler{
+    z-index: 3;
+  }
+
+  /* push opened menu a bit down */
+  .navbar-collapse{
+    margin-top: 0.75rem;
+  }
+}
+
+
 </style>
 
 <nav class="navbar navbar-expand-md navbar-light bg-body-tertiary border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+ <a id="mobileBrand" class="navbar-brand brand-center d-flex align-items-center gap-2" href="/listings">
+
+  <i class="fa-regular fa-compass"></i>
+  <span class="brand-text">VoyageLust</span>
+
+</a>
+
  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
   aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -89,4 +127,22 @@ max-width:250px;
       </div>
     </div>
   </div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const collapse = document.getElementById("navbarNavAltMarkup");
+    const brand = document.getElementById("mobileBrand");
+
+    if (!collapse || !brand) return;
+
+    collapse.addEventListener("show.bs.collapse", () => {
+      brand.style.display = "none";
+    });
+
+    collapse.addEventListener("hidden.bs.collapse", () => {
+      brand.style.display = "";
+    });
+  });
+</script>
+
 </nav>          
