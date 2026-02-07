@@ -1,0 +1,21 @@
+<% layout("/layouts/boilerplate") %>
+
+<h3 class="mt-4">My Liked Listings <i class="fa-regular fa-heart" style="color: red;"></i></h3>
+<br>
+
+<div class="row">
+  <% if (likes.length === 0) { %>
+    <p>No liked listings yet</p>
+  <% } %>
+
+  <% for (let listing of likes) { %>
+    <div class="col-md-4">
+      <a href="/listings/<%= listing._id %>">
+         <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height:20rem">
+         </a>
+        <p><b><%= listing.title %></b><br>
+       ₹<%= listing.price %>/night</p>
+      
+    </div>
+  <% } %>
+</div>
