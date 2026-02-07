@@ -1,7 +1,8 @@
 <%layout("/layouts/boilerplate") %>
-  <body>
+  
     <div class="row mt-3">
-      <div class="col-8 offset-2">
+    <div class="col-12 col-md-8 offset-md-2">
+
     <h3>Edit your Listing</h3>
 
 <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" enctype="multipart/form-data" class="needs-validation" novalidate>
@@ -29,7 +30,8 @@
 
 <div class="mb-3">
   Original Listing Image:<br>
-    <img src="<%= orignalImageUrl %>" width="400rem height:200rem">
+   <img src="<%= orignalImageUrl %>" class="img-fluid rounded" style="max-height:220px; object-fit:cover;">
+
 </div>
     
 <div class="mb-3">
@@ -84,5 +86,5 @@
     
       </div>
     </div>
-    <script src="/js/script.js"></script>
-  </body>
+   
+

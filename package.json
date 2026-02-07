@@ -4,7 +4,7 @@
       "node":"v22.20.0"
   },
 
-  "name": "majorproject",
+  "name": "majorproject", 
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

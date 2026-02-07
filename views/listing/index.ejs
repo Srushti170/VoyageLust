@@ -3,18 +3,25 @@
 <style>
 
     #filters{
-    display:flex;
-   
-    
-    }
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+#filters::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
 
-    .filter{
-        text-align: center;
-        margin-right:2rem;
-    cursor: pointer;
-    margin-top: 2rem;
-    opacity: 0.7;
-    }
+
+   .filter{
+  text-align: center;
+  cursor: pointer;
+  margin-top: 2rem;
+  opacity: 0.7;
+  flex: 0 0 auto; /* prevents shrinking in scroll row */
+}
+
 
     .filter:hover{
         opacity: 1;
@@ -31,9 +38,17 @@
         height: 3rem;
         display: flex;
         align-items: center;
-        margin-top: 2rem;
+        margin-top: 1rem;
         margin-left: auto;
+        flex: 0 0 auto;
+white-space: nowrap;
     }
+
+    .listing-thumb{ height: 20rem; }
+@media (max-width: 767.98px){
+  .listing-thumb{ height: 14rem; }
+}
+ 
     </style>
     
    <div id="filters">
@@ -94,14 +109,17 @@
         <button>Create new Listing</button>
     </form> -->
 
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mt-3">
+
         <% if (allListing.length === 0) { %>
   <p class="text-center mt-4">No listings found</p>
 <% } %>
 
 <%for(let listing of allListing){%>
-    <a href="/listings/<%=listing._id%>" class="listing-link">
-        <div class="card listing-card">
+  <div class="col">
+    <a href="/listings/<%=listing._id%>" class="listing-link d-block h-100">
+      <div class="card listing-card h-100">
+
 
 
             <!-- like -->
@@ -118,15 +136,9 @@
             <% } %>
         </button>
     </form>
-    
 
-             <!--  -->
- 
+<img src="<%=listing.image.url%>" class="card-img-top listing-thumb" alt="listing_image">
 
-
-
-
-  <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height:20rem">
   <div class="card-img-overlay"></div>
   <div class="card-body">
     <p class="card-text"><b><%=listing.title%></b><br>
@@ -137,6 +149,7 @@
   </div>
 </div>
 </a>
+  </div>
 <%}%>
     </div>
 

@@ -31,7 +31,7 @@ module.exports.renderLoginForm=(req,res)=>{
 }
 
 module.exports.login=async(req,res)=>{
-req.flash("success","welcome to VoyageLust,you are logged in");
+req.flash("success","welcome to VoyageLust!....You are logged in");
 res.redirect(res.locals.redirectUrl||"/listings");
 }
 

@@ -7,7 +7,7 @@ body{
 }
 
 .navbar{
-    height:5rem;
+    min-height:5rem;
     background-color: white;
  
 }
@@ -32,7 +32,7 @@ body{
 
 .f-info{
     display:flex;
-    height:8rem;
+    min-height:8rem;
     text-align: center;
     background-color: #ebebeb;
     flex-wrap: wrap;
@@ -45,6 +45,7 @@ body{
    display:flex;
    align-items: center;
    justify-content: center;
+   gap: 0.75rem;
 }
 
 
@@ -195,4 +196,74 @@ background-color: white;
 
 .recenter-btn:hover {
   background-color: #f0f0f0;
+}
+
+/* ✅ Mobile responsive fixes */
+@media (max-width: 767.98px) {
+
+  /* Navbar: allow collapsed menu to expand */
+  .navbar{
+    height: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Footer: allow wrapping without overflow */
+  .f-info{
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  /* Buttons row on show/edit pages: stack nicely */
+  .btns{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  /* Listing image on show page */
+  .show-img{
+    height: 40vh;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  /* Cards spacing a bit tighter on mobile */
+  .listing-card{
+    margin-bottom: 1.25rem;
+  }
+
+  /* Map should fit screen (if map height isn't set elsewhere) */
+  #map{
+    width: 100%;
+    height: 260px;
+  }
+}
+
+#map { height: 260px; }
+@media (min-width: 768px){
+  #map { height: 320px; }
+}
+
+.flash-alert{
+  margin: 0;
+  padding: 0.65rem 0.9rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+/* Center the close (X) inside our compact flash */
+.flash-alert{
+  position: relative;
+  padding-right: 2.75rem; /* space for the X */
+}
+
+.flash-alert .btn-close{
+  position: absolute;
+  top: 50%;
+  right: 0.85rem;
+  transform: translateY(-50%);
+  padding: 0.25rem;  /* reduce Bootstrap's huge padding */
+  margin: 0;
 }

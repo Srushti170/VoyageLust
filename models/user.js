@@ -4,7 +4,7 @@ const passportLocalMongoose=require("passport-local-mongoose");
 
 
 
-//passport username and password khud define kr dega 
+
 const userSchema=new Schema({
     email:{
         type:String,

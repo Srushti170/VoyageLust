@@ -97,7 +97,7 @@ newListing.geometry = {
     { new: true }
   );
 
-  // ================= MAP UPDATE (ADD ONLY) =================
+
   const updatedListing = req.body.listing;
 
   const locationChanged =
@@ -126,7 +126,7 @@ newListing.geometry = {
       };
     }
   }
-  // =========================================================
+
 
   // image update (your existing logic)
   if (typeof req.file !== "undefined") {
@@ -136,7 +136,6 @@ newListing.geometry = {
     await listing.save();
   }
 
-  // ⭐ CRITICAL LINE (ADDED – DO NOT REMOVE)
   await listing.save();
 
   res.redirect(`/listings/${id}`);

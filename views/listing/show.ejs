@@ -1,17 +1,14 @@
 <% layout("/layouts/boilerplate") %>
 
-
-
-<body>
-
   <div class="row mt-4">
-    <div class="col-6 offset-2">
+    <div class="col-12 col-md-8 offset-md-2">
+
       <h3><b><%= listing.title %></b></h3><br>
     </div>
   </div>
 
   <div class="row">
-    <div class="card col-6 offset-2 show-card listing-card">
+    <div class="card col-12 col-md-8 offset-md-2 show-card listing-card">
        <i>Posted by: <b><%= listing.owner.username %></b></i>
       <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
 <br>
@@ -28,19 +25,19 @@
     </div>
   </div>
  
-
   <!-- BUTTONS -->
    <%if(currUser && currUser._id.equals(listing.owner._id)) { %>
   <div class="row">
-    <div class="col-6 offset-2">
+   <div class="card col-12 col-md-8 offset-md-2 show-card listing-card">
+
     
       <div class="btns">
         <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark add-btn">
           Edit
         </a>
 
-        <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-          <button class="btn btn-dark offset-3">
+        <form class="ms-md-3 mt-2 mt-md-0" method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+          <button class="btn btn-dark" >
             Delete
           </button>
         </form>
@@ -51,7 +48,8 @@
  <%} %>
 
   <!-- review -->
-  <div class="mb-3 col-8 offset-2 ">
+  <div class="mb-3 col-12 col-md-8 offset-md-2">
+
          <%if(currUser){%>
     <hr>
 
@@ -103,7 +101,8 @@
   
   <div class="row">
   <% for (review of listing.reviews) { %>
-  <div class="card col-5 ms-3 mb-3 pb-2 pt-2 review-box">
+<div class="card col-12 col-md-5 ms-md-3 mb-3 pb-2 pt-2 review-box">
+
     <div class="card-body">
       <h5 class="card-title"><%=review.author.username%></h5>
  <p class="starability-result" data-rating="<%=review.rating%>">
@@ -125,13 +124,14 @@
 <% if (listing.geometry && listing.geometry.coordinates) { %>
 
 
-<h4 class="mt-4 col-8 offset-3">Location</h4>
-<div class="col-8 offset-2 mb-4">
+<h4 class="mt-4 col-12 col-md-8 offset-md-2">Location</h4>
+
+<div class="col-12 col-md-8 offset-md-2 mb-4">
 
 <div class="map-wrapper">
   <div
     id="map"
-    style="height:300px; border-radius:10px;"
+    style=" border-radius:10px;"
     data-lng="<%= listing.geometry.coordinates[0] %>"
     data-lat="<%= listing.geometry.coordinates[1] %>"
     data-title="<%= listing.title %>"
@@ -161,6 +161,3 @@
 
 <script src="/js/map.js"></script>
 
-
-
-</body>

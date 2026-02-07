@@ -1,8 +1,8 @@
 <%layout("/layouts/boilerplate") %>
-<body>
 
   <div class="row mt-3">
-    <div class="col-8 offset-2">
+<div class="col-12 col-md-8 offset-md-2">
+
       <br>
    <h3>Create a new Listing</h3>
     <form action="/listings" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
@@ -24,7 +24,9 @@
      name="listing[description]"
      placeholder="enter description"
      class="form-control"
+     rows="4"
      required></textarea>
+
     <div class="invalid-feedback">Please enter a short description</div>
 </div>
       
@@ -42,10 +44,13 @@
 <div class="mb-3 col-md-4">
     <label for="price" class="form-label">Price</label>
     <input name="listing[price]"
-       placeholder="enter price" 
-       
-       class="form-control" 
-       required/>
+   placeholder="enter price"
+   type="number"
+   min="0"
+   step="1"
+   class="form-control"
+   required/>
+
        <div class="invalid-feedback">Please enter valid price</div>
 </div>
       
@@ -78,4 +83,3 @@
 </form>
 </div>
 </div>
-</body>
